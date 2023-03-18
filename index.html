@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <title>none</title>
+    <style type="text/css">
+      * {
+        padding: 0;
+        margin: 5px;
+      }
+      .body {
+        background-image: linear-gradient(lightblue, darkblue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 400px;
+        max-height: 350px;
+        height: 250px;
+        margin: 0 auto;
+      }
+      .setting-wrapper {
+        background-image: linear-gradient(lightblue, darkblue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0.5;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+      }
+      .setting-wrapper:hover {
+        opacity: 1;
+        border: 2.5px solid aliceblue;
+      }
+      .label {
+        color: gold;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: Verdana, sans-serif;
+        letter-spacing: 1.5px;
+      }
+      .dimensions-inp {
+        padding: 5px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .dimensions-inp:hover {
+        padding: 8px;
+        background-color: black;
+        color: aliceblue;
+      }
+      .dimensions-set-btn {
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .dimensions-set-btn:hover {
+        padding: 8px;
+      }
+      .block {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        text-align: center;
+        border: 5px solid darkblue;
+        margin: 0;
+      }
+      .block:hover {
+        background-color: gold;
+        border-left: 5px solid red;
+        border-top: 5px solid green;
+        border-right: 5px solid blue;
+        border-bottom: 5px solid black;
+      }
+      .value {
+        margin-top: 20px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body class="body" id="body">
+    <section class="setting-wrapper" id="setting-wrapper">
+      <label for="dimensions-inp" class="label">[Enter Dimensions]</label>
+      <input type="text" class="dimensions-inp" id="dimensions-inp" name="dimensions" placeholder="example: 3x3, 4x4, 5x5">
+      <button class="dimensions-set-btn" id="dimensions-set-btn">Create</button>
+    </section><br><br><br>
+    <script>
+      let body = document.getElementById("body");
+      let dimensionsInput = document.getElementById("dimensions-inp");
+      let dimensionsSetBtn = document.getElementById("dimensions-set-btn");
+      
+      dimensionsSetBtn.onclick = function() {
+      
+          let counter = 1;
+          let condition;
+          
+          if (dimensionsInput.value == "3x3") {
+              body.style.width = "200px";
+              condition = 10;
+          } else if (dimensionsInput.value == "4x4") {
+              body.style.width = "250px";
+              condition = 17;
+          } else if (dimensionsInput.value == "5x5") {
+              body.style.width = "300px";
+              condition = 26;
+          }
+          
+          for (counter; counter < condition; counter++) {
+            const block = document.createElement("div");
+            block.setAttribute("class", "block");
+            body.appendChild(block);
+          }
+      }
+    </script>
+  </body>
+</html>
